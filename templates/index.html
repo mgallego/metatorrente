@@ -2,6 +2,7 @@
     <head>
 		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+		<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 
 		<script type="text/javascript">
 			function search() {
@@ -43,11 +44,18 @@
 		</script>
     </head>
     <body>
-		<form action="javascript:search()">
-			<input type="text" id="search-string" name="search-string"/>
-			<input type="submit">
-		</form>
-		<div id="search-results">
+		<div class="row">
+			<h1 class="span4">MetaTorrent</h1>
+		</div>
+		<div class="row">
+			<form class="form-search inline" action="javascript:search()">
+				<div class="span5 offset4">
+					<input type="text" id="search-string" name="search-string" class="input-block-level"/>
+				</div>
+					<button type="submit" class="btn">Search</button>
+			</form>
+		</div>
+		<div id="search-results" class="row">
 		</div>
     </body>
 </html>
