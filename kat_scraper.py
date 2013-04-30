@@ -33,7 +33,3 @@ class KatScraper(Scraper):
 
     def get_torrents(self, description):
         return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)
-
-# scraper = KatScraper()
-# print sorted(scraper.get_torrent_info('game'), key=itemgetter('seed'), reverse=True)
-
