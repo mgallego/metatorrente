@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import urllib
 from scraper import Scraper
+from operator import itemgetter
 
 class KatScraper(Scraper):
 
@@ -26,9 +27,10 @@ class KatScraper(Scraper):
         #Obtain the torrent detail
         torrent_title = torrent.find('div', {'class': 'torrentname'}).find_all('a')[1].text
         magnet_link = torrent.find('a', {'title': 'Torrent magnet link'})['href']
-        seed = torrent.find_all('td')[4].text
-        leech = torrent.find_all('td')[5].text
+        seed = int(torrent.find_all('td')[4].text)
+        leech = int(torrent.find_all('td')[5].text)
         return {'torrent_title': torrent_title, 'magnet_link': magnet_link, 'seed': seed, 'leech': leech}
 
 scraper = KatScraper()
-print scraper.get_torrent_info('game')
+print sorted(scraper.get_torrent_info('game'), key=itemgetter('seed'), reverse=True)
+
