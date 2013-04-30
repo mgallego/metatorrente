@@ -31,6 +31,9 @@ class KatScraper(Scraper):
         leech = int(torrent.find_all('td')[5].text)
         return {'torrent_title': torrent_title, 'magnet_link': magnet_link, 'seed': seed, 'leech': leech}
 
-scraper = KatScraper()
-print sorted(scraper.get_torrent_info('game'), key=itemgetter('seed'), reverse=True)
+    def get_torrents(self, description):
+        return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)
+
+# scraper = KatScraper()
+# print sorted(scraper.get_torrent_info('game'), key=itemgetter('seed'), reverse=True)
 
