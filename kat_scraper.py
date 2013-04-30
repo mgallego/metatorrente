@@ -1,8 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import urllib
+from scraper import Scraper
 
-class KatScraper():
+class KatScraper(Scraper):
 
     def get_torrent_info(self, description):
         search = "%s" %(description)
