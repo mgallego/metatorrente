@@ -7,13 +7,32 @@
 			$.ajax({
 			type: "GET",
 			url: "/api/search/test"
-			}).done(function( msg ) {
-			console.log(msg);
-			});
+			}).done(function( torrents ) {
 
+			results = createResultTable(torrents);
+			//console.log(results)
+
+			$('#search-results').append(
+			     results
+			);
+			console.log(torrents);
+			});
+			
+			function createResultTable(torrents) {
+			    results = "<table><thead><th>Title</th><th>Magnet</th><th>Seed</th><th>Leech</th></thead>";
+				for (i in torrents) {
+				    results = results + '<tr><td class="torrent-name">' + torrents[i].torrent_title + '</td></tr>';
+				    results = results + '<tr><td class="magnet-link"><a href="' + torrents[i].magnet_link + '">Link</a></td></tr>';
+				    results = results + '<tr><td class="seed">' + torrents[i].seed + '</td></tr>';
+				    results = results + '<tr><td class="leech">' + torrents[i].leech + '</td></tr>';
+				};
+			    results = results + "</table>";
+			    return results;
+			}
 		</script>
     </head>
     <body>
-	Hello World
+		<div id="search-results">
+		</div>
     </body>
 </html>
