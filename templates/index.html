@@ -4,20 +4,23 @@
 		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
 
 		<script type="text/javascript">
+			function search() {
 			$.ajax({
 			type: "GET",
-			url: "/api/search/test"
+			url: "/api/search/"+ $("#search-string").val()
 			}).done(function( torrents ) {
 
 			results = createResultTable(torrents);
 			//console.log(results)
-
+			cleanResults();
+			
 			$('#search-results').append(
 			     results
 			);
-			console.log(torrents);
+			//console.log(torrents);
 			});
-			
+			}
+
 			function createResultTable(torrents) {
 			    results = "<table><thead><th>Title</th><th>Magnet</th><th>Seed</th><th>Leech</th></thead>";
 				for (i in torrents) {
@@ -28,10 +31,22 @@
 				};
 			    results = results + "</table>";
 			    return results;
+			};
+			
+			function cleanResults()
+			{
+			    $('#search-results').html(
+				''
+				);
 			}
+
 		</script>
     </head>
     <body>
+		<form action="javascript:search()">
+			<input type="text" id="search-string" name="search-string"/>
+			<input type="submit">
+		</form>
 		<div id="search-results">
 		</div>
     </body>
