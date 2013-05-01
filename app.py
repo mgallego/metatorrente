@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 from flask.ext import restful
-from kat_scraper import KatScraper
+from scrapers.kat_scraper import KatScraper
 
 app = Flask(__name__)
 api = restful.Api(app)
