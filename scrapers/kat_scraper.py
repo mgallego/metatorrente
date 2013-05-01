@@ -34,7 +34,7 @@ class KatScraper(Scraper):
         magnet = torrent.find('a', {'title': 'Torrent magnet link'})['href']
         seed = int(torrent.find_all('td')[4].text)
         leech = int(torrent.find_all('td')[5].text)
-        size = int(torrent.find_all('td')[2].text)
+        size = torrent.find_all('td')[1].text
         return {'site': self.site, 'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
 
     def get_torrents(self, description):
