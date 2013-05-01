@@ -18,7 +18,7 @@
 			function search() {
 			$.ajax({
 			type: "GET",
-			url: "/api/search/"+ $("#search-string").val()
+			url: "/api/torrents/"+ $("#search-string").val()
 			}).done(function( torrents ) {
 
 			results = createResultTable(torrents);

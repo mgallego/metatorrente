@@ -22,7 +22,7 @@ def api_doc():
 def about():
     return render_template('about.html')
 
-api.add_resource(Torrent, '/api/search/<string:description>')
+api.add_resource(Torrent, '/api/torrents/<string:description>')
 
 if __name__ == '__main__':
     app.run(debug=True)
