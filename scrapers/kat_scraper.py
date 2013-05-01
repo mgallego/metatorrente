@@ -6,6 +6,9 @@ from operator import itemgetter
 
 class KatScraper(Scraper):
 
+    def __init__(self):
+        self.root = 'http://kat.ph'
+    
     def get_torrent_info(self, description):
         search = "%s" %(description)
         torrent_request = requests.get("http://kat.ph/usearch/" +  urllib.quote(search))
@@ -26,11 +29,12 @@ class KatScraper(Scraper):
     def get_torrent_detail(self, torrent):
         #Obtain the torrent detail
         name = torrent.find('div', {'class': 'torrentname'}).find_all('a')[1].text
+        link = self.root + torrent.find('div', {'class': 'torrentname'}).find_all('a')[1]['href']
         magnet = torrent.find('a', {'title': 'Torrent magnet link'})['href']
         seed = int(torrent.find_all('td')[4].text)
         leech = int(torrent.find_all('td')[5].text)
         size = int(torrent.find_all('td')[2].text)
-        return {'name': name, 'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
+        return {'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
 
     def get_torrents(self, description):
         return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)
