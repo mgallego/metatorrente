@@ -1,0 +1,11 @@
+language: python
+python:
+    - 2.6
+    - 2.7
+env:
+    - DEPS=true
+    - DEPS=false
+install: "pip install -r requirements.txt --use-mirrors"
+script:
+    - cd scrapers
+    - python -m unittest2 discover -t test -p '*test*.py'
