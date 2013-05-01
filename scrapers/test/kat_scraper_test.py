@@ -15,6 +15,7 @@ class TestKatScraper(unittest.TestCase):
     def test_torrent_document_keys(self):
         torrent = self.scraper.get_torrents('ubuntu')[0]
         self.assertTrue('name' in torrent)
+        self.assertTrue('link' in torrent)
         self.assertTrue('magnet' in torrent)
         self.assertTrue('seed' in torrent)
         self.assertTrue('leech' in torrent)
