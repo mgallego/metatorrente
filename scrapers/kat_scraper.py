@@ -25,11 +25,11 @@ class KatScraper(Scraper):
 
     def get_torrent_detail(self, torrent):
         #Obtain the torrent detail
-        torrent_title = torrent.find('div', {'class': 'torrentname'}).find_all('a')[1].text
-        magnet_link = torrent.find('a', {'title': 'Torrent magnet link'})['href']
+        name = torrent.find('div', {'class': 'torrentname'}).find_all('a')[1].text
+        magnet = torrent.find('a', {'title': 'Torrent magnet link'})['href']
         seed = int(torrent.find_all('td')[4].text)
         leech = int(torrent.find_all('td')[5].text)
-        return {'torrent_title': torrent_title, 'magnet_link': magnet_link, 'seed': seed, 'leech': leech}
+        return {'name': name, 'magnet': magnet, 'seed': seed, 'leech': leech}
 
     def get_torrents(self, description):
         return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)
