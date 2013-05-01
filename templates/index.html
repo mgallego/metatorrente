@@ -37,8 +37,8 @@
 			    results = '<table class="table table-striped span12 table-hover"><thead><th>Title</th><th>Magnet</th><th>Seed</th><th>Leech</th></thead>';
 				for (i in torrents) {
 			        results = results + '<tr>';			  
-				    results = results + '<td class="torrent-name">' + torrents[i].torrent_title + '</td>';
-				    results = results + '<td class="magnet-link"><a href="' + torrents[i].magnet_link + '"><i class="icon-magnet"></a></td>';
+				    results = results + '<td class="torrent-name">' + torrents[i].name + '</td>';
+				    results = results + '<td class="magnet-link"><a href="' + torrents[i].magnet + '"><i class="icon-magnet"></a></td>';
 				    results = results + '<td class="seed">' + torrents[i].seed + '</td>';
 				    results = results + '<td class="leech">' + torrents[i].leech + '</td>';
 				    results = results + '</tr>';			  
