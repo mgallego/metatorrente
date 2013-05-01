@@ -19,5 +19,16 @@ class TestKatScraper(unittest.TestCase):
         self.assertTrue('seed' in torrent)
         self.assertTrue('leech' in torrent)
 
+    def test_torrent_name(self):
+        torrent = self.scraper.get_torrents('ubuntu')[0]
+        self.assertTrue('buntu' in torrent['name'])
+
+    def test_sort(self):
+        torrents = self.scraper.get_torrents('ubuntu')
+        self.assertTrue(torrents[0]['seed'] > torrents[1]['seed'])
+        self.assertTrue(torrents[1]['seed'] > torrents[2]['seed'])
+        self.assertTrue(torrents[2]['seed'] > torrents[3]['seed'])
+        self.assertTrue(torrents[3]['seed'] > torrents[4]['seed'])
+
 if __name__ == '__main__':
     unittest.main()
