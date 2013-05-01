@@ -14,6 +14,14 @@ class Torrent(restful.Resource):
 def index():
     return render_template('index.html')
 
+@app.route('/api')
+def api_doc():
+    return render_template('api.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 api.add_resource(Torrent, '/api/search/<string:description>')
 
 if __name__ == '__main__':
