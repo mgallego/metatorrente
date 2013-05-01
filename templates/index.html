@@ -29,7 +29,7 @@
 				for (i in torrents) {
 			        results = results + '<tr>';			  
 				    results = results + '<td class="torrent-name">' + torrents[i].torrent_title + '</td>';
-				    results = results + '<td class="magnet-link"><a href="' + torrents[i].magnet_link + '">Link</a></td>';
+				    results = results + '<td class="magnet-link"><a href="' + torrents[i].magnet_link + '"><i class="icon-magnet"></a></td>';
 				    results = results + '<td class="seed">' + torrents[i].seed + '</td>';
 				    results = results + '<td class="leech">' + torrents[i].leech + '</td>';
 				    results = results + '</tr>';			  
@@ -50,11 +50,15 @@
     <body class="container">
 		<a href="https://github.com/mgallego/metatorrente"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 		<div class="row">
-			<h1 class="span4">MetaTorrent</h1>
+			<h1 >MetaTorrent</h1>
+			<div class="row">
+				<h4 class="span6">A clean, simple and easy torrent meta search engine</h4>
+			</div>
 		</div>
+		<br/><br/>
 		<div class="row">
 			<form class="form-search inline" action="javascript:search()">
-				<div class="span5 offset4">
+				<div class="span5 offset3">
 					<input type="text" id="search-string" name="search-string" class="input-block-level"/>
 				</div>
 					<button type="submit" class="btn">Search</button>
