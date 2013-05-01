@@ -8,6 +8,7 @@ class KatScraper(Scraper):
 
     def __init__(self):
         self.root = 'http://kat.ph'
+        self.site = "kat.ph"
     
     def get_torrent_info(self, description):
         search = "%s" %(description)
@@ -34,7 +35,7 @@ class KatScraper(Scraper):
         seed = int(torrent.find_all('td')[4].text)
         leech = int(torrent.find_all('td')[5].text)
         size = int(torrent.find_all('td')[2].text)
-        return {'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
+        return {'site': self.site, 'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
 
     def get_torrents(self, description):
         return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)
