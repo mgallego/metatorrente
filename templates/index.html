@@ -21,20 +21,23 @@
 			url: "/api/torrents/"+ $("#search-string").val()
 			}).done(function( torrents ) {
 
-			results = createResultTable(torrents);
-			//console.log(results)
-			cleanResults();
+			    results = createResultTable(torrents);
+			    cleanResults();
 			
-			$('#search-results').append(
-			     results
-			);
-			//console.log(torrents);
+			    $('#search-results').append(
+			        results
+			    );
 			});
 			}
 
 			function createResultTable(torrents) {
-			    
+			  
+			    if (torrents.length === 0) {
+			       return '<h2>Nothing found</h2>';
+			    };
+
 			    results = '<table class="table table-striped span12 table-hover"><thead><th>Title</th><th>Magnet</th><th>Size</th><th>Seed</th><th>Leech</th></thead>';
+			
 				for (i in torrents) {
 			        results = results + '<tr>';			  
 				    results = results + '<td class="torrent-name"><a href="' + torrents[i].link +'" target="_blank">'
