@@ -18,6 +18,7 @@ class TestKatScraper(unittest.TestCase):
         self.assertTrue('magnet' in torrent)
         self.assertTrue('seed' in torrent)
         self.assertTrue('leech' in torrent)
+        self.assertTrue('size' in torrent)
 
     def test_torrent_name(self):
         torrent = self.scraper.get_torrents('ubuntu')[0]
