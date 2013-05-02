@@ -7,12 +7,13 @@ from operator import itemgetter
 class KatScraper(Scraper):
 
     def __init__(self):
+        Scraper.__init__(self)
         self.root = 'http://kat.ph'
         self.site = "kat.ph"
     
     def get_torrent_info(self, description):
         search = "%s" %(description)
-        torrent_request = requests.get("http://kat.ph/usearch/" +  urllib.quote(search))
+        torrent_request = requests.get("http://kat.ph/usearch/" +  urllib.quote(search), headers=self.headers)
         torrent_html = torrent_request.text
         torrent_dom = BeautifulSoup(torrent_html)
         torrents = []
