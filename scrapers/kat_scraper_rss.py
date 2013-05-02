@@ -2,7 +2,6 @@ import requests
 from bs4 import BeautifulSoup
 import urllib
 from scraper import Scraper
-from operator import itemgetter
 
 class KatScraperRSS(Scraper):
 
