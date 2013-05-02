@@ -4,7 +4,7 @@
 scrapers_array = [
     {'module': 'kat_scraper', 'class': 'KatScraper'},
 #    {'module': 'bs_scraper', 'class': 'BSScraper'},
-    {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
+#    {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
 ]
 
 
