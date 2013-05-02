@@ -42,6 +42,3 @@ class BSScraper(Scraper):
         torrent_data_dom = BeautifulSoup(torrent_data_html)
         magnet = torrent_data_dom.find('a', {'title': 'Magnet Link'})['href']
         return {'magnet': magnet}
-
-    def get_torrents(self, description):
-        return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)

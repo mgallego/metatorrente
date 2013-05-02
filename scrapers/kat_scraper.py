@@ -37,6 +37,3 @@ class KatScraper(Scraper):
         leech = int(torrent.find_all('td')[5].text)
         size = torrent.find_all('td')[1].text
         return {'site': self.site, 'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
-
-    def get_torrents(self, description):
-        return sorted(self.get_torrent_info(description), key=itemgetter('seed'), reverse=True)

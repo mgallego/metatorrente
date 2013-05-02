@@ -1,13 +1,13 @@
 from flask import Flask, render_template
 from flask.ext import restful
-from scrapers.bs_scraper import BSScraper
+from scrapers.scrap_all import ScrapAll
 
 app = Flask(__name__)
 api = restful.Api(app)
 
 class Torrent(restful.Resource):
     def get(self, description):
-        scraper = BSScraper()
+        scraper = ScrapAll()
         return scraper.get_torrents(description)
 
 @app.route('/')
