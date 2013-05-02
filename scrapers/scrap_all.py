@@ -24,4 +24,6 @@ class ScrapAll():
         for scraper in scrapers_array:
             scraper_object = eval(scraper['class'])()
             torrents.append(scraper_object.get_torrents(search))
+        if (len(torrents[0]) == 0):
+            return torrents[0]
         return Scraper.sort(sum(torrents, []), 'seed')

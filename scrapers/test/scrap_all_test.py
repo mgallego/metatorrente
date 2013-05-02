@@ -1,10 +1,10 @@
 import unittest2 as unittest
-from bs_scraper import BSScraper
+from scrap_all import ScrapAll
 
 class TestKatScraper(unittest.TestCase):
 
     def setUp(self):
-        self.scraper = BSScraper()
+        self.scraper = ScrapAll()
             
     def test_get_torrent(self):
         self.assertTrue(len(self.scraper.get_torrents('ubuntu')) > 0)
@@ -32,10 +32,6 @@ class TestKatScraper(unittest.TestCase):
         self.assertTrue(torrents[1]['seed'] > torrents[2]['seed'])
         self.assertTrue(torrents[2]['seed'] > torrents[3]['seed'])
         self.assertTrue(torrents[3]['seed'] > torrents[4]['seed'])
-
-    def test_site(self):
-        torrent = self.scraper.get_torrents('ubuntu')[0]
-        self.assertTrue('bitsnoop.com' in torrent['site'])
 
 if __name__ == '__main__':
     unittest.main()
