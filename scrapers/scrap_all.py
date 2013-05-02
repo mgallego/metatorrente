@@ -4,6 +4,7 @@
 scrapers_array = [
     {'module': 'kat_scraper', 'class': 'KatScraper'},
 #    {'module': 'bs_scraper', 'class': 'BSScraper'},
+    {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
 ]
 
 
@@ -14,6 +15,7 @@ from operator import itemgetter
 
 from kat_scraper import KatScraper
 from bs_scraper import BSScraper 
+from bs_scraper_rss import BSScraperRSS
 from scraper import Scraper
 
 class ScrapAll():
