@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import urllib
 from scraper import Scraper
 from operator import itemgetter
+import time
 
 class BSScraper(Scraper):
 
@@ -18,9 +19,12 @@ class BSScraper(Scraper):
         torrent_dom = BeautifulSoup(torrent_html)
         torrents = []
         try:
+            counter = 0
             #find all torrents
             for torrent in torrent_dom.find('ol', {'id': 'torrents'}).find_all('li'):
-                torrents.append(self.get_torrent_detail(torrent))
+                counter += 1
+                if counter < 6:
+                    torrents.append(self.get_torrent_detail(torrent))
         except: 
             #Return an empty object when not data found
             return {}
@@ -37,6 +41,7 @@ class BSScraper(Scraper):
         return {'site': self.site, 'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
 
     def get_torrent_data(self, link):
+        time.sleep(0.5)
         torrent_data_request = requests.get(link, headers=self.headers)
         torrent_data_html = torrent_data_request.text
         torrent_data_dom = BeautifulSoup(torrent_data_html)
