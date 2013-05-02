@@ -3,8 +3,9 @@
 
 scrapers_array = [
     {'module': 'kat_scraper_rss', 'class': 'KatScraperRSS'},
-#    {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
+    {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
     {'module': 'fenopy_scraper_api', 'class': 'FenopyScraperApi'},
+    {'module': 'monova_scraper_rss', 'class': 'MonovaScraperRSS'},
 ]
 
 
@@ -16,6 +17,7 @@ from operator import itemgetter
 from kat_scraper_rss import KatScraperRSS
 from bs_scraper_rss import BSScraperRSS
 from fenopy_scraper_api import FenopyScraperApi
+from monova_scraper_rss import MonovaScraperRSS
 from scraper import Scraper
 
 class ScrapAll():

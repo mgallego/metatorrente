@@ -11,3 +11,6 @@ class Scraper(object):
     @staticmethod
     def sort(torrents, field):
         return sorted(torrents, key=itemgetter(field), reverse=True)            
+
+    def return_null_torrent(self):
+        return {'site': '', 'name': '', 'link': '',  'magnet': '', 'seed': 0, 'leech': 0, 'size': ''}

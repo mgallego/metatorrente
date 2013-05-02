@@ -14,10 +14,13 @@ class BSScraperRSS(Scraper):
     
     def get_torrent_info(self, description):
         search = "%s" %(description)
-        torrent_request = requests.get("http://bitsnoop.com/search/all/" +  urllib.quote(search) + "/c/d/1/?fmt=rss", headers=self.headers)
-        torrent_html = torrent_request.text
-        torrent_dom = BeautifulSoup(torrent_html)
-        torrents = []
+        try:
+            torrent_request = requests.get("http://bitsnoop.com/search/all/" +  urllib.quote(search) + "/c/d/1/?fmt=rss", headers=self.headers, timeout=2)
+            torrent_html = torrent_request.text
+            torrent_dom = BeautifulSoup(torrent_html)
+            torrents = []
+        except:
+            return []
         try:
             #find all torrents
             for torrent in torrent_dom.find_all('item'):

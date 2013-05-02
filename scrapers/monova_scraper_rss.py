@@ -40,7 +40,7 @@ class MonovaScraperRSS(Scraper):
             size = description[5] + ' ' + description[6]
             return {'site': self.site, 'name': name, 'link': link,  'magnet': magnet, 'seed': seed, 'leech': leech, 'size': size}
         except:
-            return {}
+            return {'site': '', 'name': '', 'link': '',  'magnet': '', 'seed': 0, 'leech': 0, 'size': ''}
 
     def get_torrent_data(self, link):
         torrent_data_request = requests.get(link, headers=self.headers)
