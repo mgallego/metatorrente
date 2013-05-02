@@ -9,7 +9,7 @@ class BSScraper(Scraper):
     def __init__(self):
         Scraper.__init__(self)
         self.root = 'http://bitsnoop.com'
-        self.site = "kat.ph"
+        self.site = "bitsnoop.com"
     
     def get_torrent_info(self, description):
         search = "%s/c/d/1" %(description)

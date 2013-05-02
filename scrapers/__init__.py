@@ -1,1 +1,3 @@
-__all__ = ["scraper", "kat_scraper"]
+__all__ = ["scraper", "kat_scraper", "bs_scraper"
+
+]
