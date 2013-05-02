@@ -4,8 +4,9 @@
 scrapers_array = [
 #    {'module': 'kat_scraper', 'class': 'KatScraper'},
 #    {'module': 'bs_scraper', 'class': 'BSScraper'},
-    {'module': 'kat_scraper', 'class': 'KatScraper'},
+    {'module': 'kat_scraper_rss', 'class': 'KatScraperRSS'},
     {'module': 'bs_scraper_rss', 'class': 'BSScraperRSS'},
+    {'module': 'fenopy_scraper_api', 'class': 'FenopyScraperApi'},
 ]
 
 
@@ -14,16 +15,14 @@ scrapers_array = [
 
 from operator import itemgetter
 
-from kat_scraper import KatScraper
 from kat_scraper_rss import KatScraperRSS
-from bs_scraper import BSScraper 
 from bs_scraper_rss import BSScraperRSS
+from fenopy_scraper_api import FenopyScraperApi
 from scraper import Scraper
 
 class ScrapAll():
  
     def get_torrents(self, search):
-        scraper = BSScraper()
         torrents = []
         for scraper in scrapers_array:
             scraper_object = eval(scraper['class'])()
