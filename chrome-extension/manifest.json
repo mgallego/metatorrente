@@ -1,0 +1,27 @@
+{
+    "manifest_version": 2,
+
+    "name": "Meta Torrent keyword search",
+    "description": "This extension search a selected keywords in the meta torrent search engine.",
+    "version": "0.1",
+
+    "permissions": [
+	"contextMenus"
+    ],
+
+    "browser_action": {
+	"default_icon": "icon.png",
+	"default_popup": "popup.html"
+    },
+
+    "icons" : {
+	"16" : "bt-16.png",
+	"48" : "bt-48.png",
+	"128" : "bt-128.png"
+    },
+
+    "background": {
+	"scripts": ["context.js"]
+    }
+
+}
