@@ -7,8 +7,7 @@
 			type: "GET",
 			url: "/api/torrents/"+ $("#search-string").val()
 			}).done(function( torrents ) {
-
-			    results = createResultTable(torrents);
+			    results = createResultTable(torrents.result);
 			    $('#search-results').html(
 			        results
 			    );
