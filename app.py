@@ -8,23 +8,25 @@ app = Flask(__name__)
 api = restful.Api(app)
 
 
-def support_jsonp(f):
-    """Wraps JSONified output for JSONP"""
-    @wraps(f)
+def jsonp(func):
+    """Wraps JSONified output for JSONP requests."""
+    @wraps(func)
     def decorated_function(*args, **kwargs):
         callback = request.args.get('callback', False)
         if callback:
-            content = str(callback) + '(' + str(f().data) + ')'
-            return current_app.response_class(content, mimetype='application/json')
+            data = str(func(*args, **kwargs).data)
+            content = str(callback) + '(' + data + ')'
+            mimetype = 'application/javascript'
+            return current_app.response_class(content, mimetype=mimetype)
         else:
-            return f(*args, **kwargs)
+            return func(*args, **kwargs)
     return decorated_function
 
 class Torrent(restful.Resource):
-    @support_jsonp
+    @jsonp
     def get(self, description):
         scraper = ScrapAll()
-        return scraper.get_torrents(description)
+        return jsonify({'result': scraper.get_torrents(description)})
 
 @app.route('/')
 def index():
